@@ -1,0 +1,13 @@
+{
+  "title": "Apache Struts2 S2-001 OGNL Injection",
+  "description": "A Struts2 2.0.1 application, vulnerable to S2-001 (CVE-2007-4556): when form validation fails, the redisplayed value goes through altSyntax evaluation, so %{...} in a field runs an OGNL expression and, from there, commands.",
+  "question": "Exploit S2-001 to run commands on the Struts2 server and read the flag.",
+  "category": "WEB",
+  "difficulty": 2,
+  "evidence_kind": "SECRET",
+  "capabilities": [
+    "ognl-injection",
+    "remote-code-execution",
+    "java"
+  ]
+}
