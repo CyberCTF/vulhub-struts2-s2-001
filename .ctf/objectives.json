@@ -1,0 +1,71 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Make the login form evaluate an OGNL expression, run a command and read /ctf/flag.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-vulhub-struts2-s2-001}",
+      "hints": [
+        "Submit the form with an empty field and look at how the value is redisplayed. Read the S2-001 advisory on altSyntax evaluation.",
+        "The flag is at /ctf/flag."
+      ],
+      "steps": [
+        {
+          "key": "framework",
+          "title": "Identify the framework",
+          "prompt": "Which Java web framework handles the form? (name only)",
+          "check": {
+            "answer": [
+              "struts",
+              "struts2",
+              "struts 2",
+              "apache struts",
+              "apache struts 2",
+              "apache struts2"
+            ]
+          }
+        },
+        {
+          "key": "advisory",
+          "title": "Name the advisory",
+          "prompt": "Which Struts security bulletin covers this bug?",
+          "check": {
+            "answer": [
+              "s2-001",
+              "s2001"
+            ]
+          }
+        },
+        {
+          "key": "trigger",
+          "title": "Find the trigger",
+          "prompt": "What must happen to the form submission for the field value to be re-evaluated? (two words)",
+          "check": {
+            "answer": [
+              "validation failure",
+              "validation fails",
+              "failed validation",
+              "validation error"
+            ]
+          }
+        },
+        {
+          "key": "language",
+          "title": "Name the language",
+          "prompt": "Which expression language evaluates the field value? (acronym)",
+          "check": {
+            "answer": [
+              "ognl",
+              "object-graph navigation language",
+              "object graph navigation language"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
